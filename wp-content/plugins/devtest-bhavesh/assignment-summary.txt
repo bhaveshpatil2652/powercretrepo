@@ -1,0 +1,34 @@
+devtest-bhavesh - Assignment Summary
+====================================
+
+Task 1 - Testimonials CPT
+- I registered a custom post type named "testimonial" and added a meta box for client name, company, and rating.
+- The shortcode displays testimonial entries with star ratings and content.
+- For the sortable admin column, I used the `manage_edit-testimonial_sortable_columns` filter to mark the custom rating column as sortable and then used `pre_get_posts` to change the query order to `meta_value_num` for the `_rating` meta key.
+
+Task 2 - WooCommerce gift wrap
+- I reviewed the requested gift-wrap behavior, but this part was not completed on the live site because the installed WooCommerce setup is showing a compatibility issue with the newer WordPress/WooCommerce stack.
+- The main reason for not finishing this task is that the site currently has a WooCommerce fatal error related to HPOS/order data store compatibility, so the gift-wrap code path could not be safely verified.
+
+
+Task 3 - Security fix
+The following vulnerabilities were identified and corrected:
+1. Missing nonce and permission checks for AJAX request handling.
+2. Missing validation of the requested post ID and post status before generating content.
+3. Unsanitized or unsafe use of user-controlled input in request processing.
+4. Potential SQL injection risk from raw query values; the query is now prepared safely.
+5. Unescaped output risk for admin note content; values are now escaped before display.
+
+Task 4 - AI integration
+- The plugin adds a "Summarise this post" feature for single blog posts.
+- It checks for an API key defined in `wp-config.php` as `OPENAI_API_KEY`.
+- If no real API key is configured, the plugin uses a mocked fallback summary message instead of pretending the result came from a live API.
+- So, for this project, a real API key was not required to complete the feature flow.
+
+AI tools used (if any)
+- GitHub Copilot and chatgpt was used for code inspection and to help confirm the plugin logic and write this summary.
+
+Known limitations
+- The WooCommerce gift-wrap task is incomplete because of the current WooCommerce compatibility problem.
+- The AI summary feature is a demo-safe fallback when no real API key is available.
+
